@@ -264,3 +264,23 @@ html, body {
   background-attachment: fixed;
   background-size: cover;
   height: 300px; }
+
+#social_networks h2 {
+  text-align: center;
+  font-size: 38px;
+  font-family: Georgia;
+  margin: 25px 0; }
+#social_networks table {
+  width: 100%;
+  line-height: 2.5em; }
+#social_networks .middle {
+  width: 80%;
+  border-bottom: 1px solid lightgrey; }
+  #social_networks .middle.last {
+    border: none; }
+#social_networks .left {
+  width: 10%;
+  text-align: left; }
+#social_networks .right {
+  width: 10%;
+  text-align: right; }

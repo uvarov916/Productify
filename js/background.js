@@ -21,6 +21,22 @@ localStorage["bing_cat"] = "work";
 
 function resetInformation() {
 
+	// social networks
+	localStorage["facebook"] = 0;
+	localStorage["twitter"] = 0;
+	localStorage["instagram"] = 0;
+	localStorage["linkedin"] = 0;
+	localStorage["pinterest"] = 0;
+	localStorage["vk"] = 0;
+
+	localStorage["facebook_vis"] = 0;
+	localStorage["twitter_vis"] = 0;
+	localStorage["instagram_vis"] = 0;
+	localStorage["linkedin_vis"] = 0;
+	localStorage["pinterest_vis"] = 0;
+	localStorage["vk_vis"] = 0;
+
+
 	localStorage["totalTime"] = 60000;
 
 	localStorage["work_time"] = 0;
@@ -180,6 +196,13 @@ function updateCounter() {
 			localStorage["totalTime"] = parseInt(localStorage["totalTime"]) + timeSpent;
 
 			currentSite = cleanedUrl;
+			if (localStorage[currentSite + "_vis"] === undefined) {
+				localStorage[currentSite + "_vis"] = 1;
+			}
+			else {
+				localStorage[currentSite + "_vis"] = parseInt(localStorage[currentSite + "_vis"]) + 1;
+			}
+
 
 			checkGoals(currentSite);
 

@@ -232,3 +232,44 @@ html, body {
 	height: 300px;
 }
 
+#social_networks {
+	h2 {
+		text-align: center;
+		font-size: 38px;
+		font-family: Georgia;
+		margin: 25px 0;
+	}
+
+	table{
+		width: 100%;
+		line-height: 2.5em;
+	}
+
+	.middle {
+		width: 80%;
+		border-bottom: 1px solid lightgrey;
+
+		&.last {
+			border: none;
+		}
+	}
+
+	.left {
+		width: 10%;
+		text-align: left;
+	}
+
+	.right {
+		width: 10%;
+		text-align: right;
+	}
+
+}
+
+
+
+
+
+
+
+
