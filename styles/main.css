@@ -229,3 +229,10 @@ html, body {
     font-family: Georgia;
     line-height: 1.25em;
     margin-top: 35%; }
+
+#table1 {
+  display: inline;
+  float: left;
+  width: 81.25%;
+  margin: 0 1.04167%;
+  margin-left: 9.375%; }
