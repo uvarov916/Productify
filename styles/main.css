@@ -199,8 +199,16 @@ body {
   width: 39.58333%;
   margin: 0 1.04167%;
   margin-left: 9.375%; }
+  #about .right h3 {
+    font-size: 1.8em; }
   #about .right div {
     margin: 10px 0 0 10px; }
   #about .right .no_goals {
     font-size: 0.8em;
     color: grey; }
+  #about .right span {
+    display: block;
+    margin: 10px 0 0 10px;
+    color: grey; }
+    #about .right span b {
+      color: black; }

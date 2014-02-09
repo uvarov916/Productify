@@ -163,6 +163,10 @@ body {
 		@include column(5);
 		@include push(1);
 
+		h3 {
+			font-size: 1.8em;
+		}
+
 		div {
 			margin: 10px 0 0 10px;
 		}
@@ -170,6 +174,16 @@ body {
 		.no_goals {
 			font-size: 0.8em;
 			color: grey;
+		}
+
+		span {
+			display: block;
+			margin: 10px 0 0 10px;
+			color: grey;
+
+			b {
+				color: black;
+			}
 		}
 	}
 
