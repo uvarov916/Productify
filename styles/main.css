@@ -58,8 +58,9 @@ div.center {
   margin: 0 auto;
   overflow: hidden; }
 
-body {
-  font-family: Lucida Grande; }
+html, body {
+  font-family: Lucida Grande;
+  height: 100%; }
 
 #top_menu {
   height: 50px;
@@ -212,3 +213,19 @@ body {
     color: grey; }
     #about .right span b {
       color: black; }
+
+#photo_block_4 {
+  height: 500px;
+  background: url("../img/photo_block_4.png") no-repeat;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100%;
+  margin-top: -50px; }
+  #photo_block_4 .center h3 {
+    font-size: 48px;
+    color: white;
+    font-family: Georgia;
+    line-height: 1.25em;
+    margin-top: 35%; }

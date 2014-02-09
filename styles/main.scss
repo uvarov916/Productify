@@ -23,8 +23,9 @@
 	color: white;
 }
 
-body {
+html, body {
 	font-family: Lucida Grande;
+	height: 100%;
 }
 
 #top_menu {
@@ -188,6 +189,20 @@ body {
 	}
 
 
+}
+
+#photo_block_4 {
+	@include photo_block("../img/photo_block_4.png");
+	min-height: 100%;
+	margin-top: -50px;
+
+	.center h3{
+		font-size: 48px;
+		color: white;
+		font-family: Georgia;
+		line-height: 1.25em;
+		margin-top: 35%;
+	}
 }
 
 

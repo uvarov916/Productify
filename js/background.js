@@ -44,6 +44,15 @@ function resetInformation() {
 	}
 }
 
+function checkGoals() {
+	var key = localStorage[currentSite + "_cat"] + "_goal";
+	if (localStorage[localStorage[currentSite + "_cat"] + "_time"] >= localStorage[key]) {
+		chrome.tabs.getSelected(null, function(tab){
+			chrome.tabs.update(tab.id, {url: "../notimeleft.html"});
+		});
+	}
+}
+
 localStorage["allCategories"] = "work,learning,shopping,entertainment,email,reference,social,other";
 
 var cat = parseCategories(localStorage["allCategories"]);
@@ -171,6 +180,9 @@ function updateCounter() {
 			localStorage["totalTime"] = parseInt(localStorage["totalTime"]) + timeSpent;
 
 			currentSite = cleanedUrl;
+
+			checkGoals(currentSite);
+
 			startTime = (new Date).getTime();
 			assignCategory();
 		}
