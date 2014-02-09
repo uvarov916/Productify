@@ -168,7 +168,7 @@ function updateCounter() {
 
 			localStorage[currentSite] = totalTime;
 			addTimeToCategory(currentSite, timeSpent);
-			localStorage["totalTime"] += timeSpent;
+			localStorage["totalTime"] = parseInt(localStorage["totalTime"]) + timeSpent;
 
 			currentSite = cleanedUrl;
 			startTime = (new Date).getTime();
