@@ -14,6 +14,19 @@
 	@include parallax;
 }
 
+@mixin blue-button {
+	display: block;
+	height: 45px;
+	background: #35c5e5;
+	border: none;
+	border-radius: 2px;
+	color: white;
+}
+
+body {
+	font-family: Lucida Grande;
+}
+
 #top_menu {
 	height: 50px;
 	background: #1F1F1F;
@@ -107,3 +120,47 @@
 #photo_block_2 {
 	@include photo_block("../img/photo_block_1.png");
 }
+
+
+#about {
+	
+	#photo_block_3 {
+		@include photo_block("../img/photo_block_3.jpg");
+		height: 400px;
+	}
+
+	.left, .right {
+		@include column(6);
+	}
+
+	.left {
+		form {
+			margin-top: 50px;
+			span {
+				display: block;
+				margin-bottom: 10px;
+			}
+			select, input {
+				width: 80%;
+				height: 20px;
+				margin-bottom: 15px;
+			}
+
+			.part2 input {
+				width: 79%;
+			}
+
+			input[type="submit"] {
+				@include blue-button;
+				@include column(3);
+				font-size: 1em;
+				margin-top: 5px;
+			}
+		}
+	}
+
+
+}
+
+
+
