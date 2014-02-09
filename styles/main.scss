@@ -199,6 +199,7 @@ html, body {
 	.center h1{
 		font-size: 48px;
 		color: white;
+		text-align: center;
 		font-family: Georgia;
 		line-height: 1.25em;
 		margin-top: 35%;
@@ -208,5 +209,26 @@ html, body {
 #table1 {
 	@include column(10);
 	@include push(1);
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+#photo_block_5 {
+	@include photo_block("../img/photo_block_5.png");
+	height: 400px;
+
+	h1 {
+		font-size: 48px;
+		text-align: center;
+		color: white;
+		font-family: Georgia;
+		line-height: 1.25em;
+		margin-top: 160px;
+	}
+}
+
+#photo_block_6 {
+	@include photo_block("../img/photo_block_6.png");
+	height: 300px;
 }
 

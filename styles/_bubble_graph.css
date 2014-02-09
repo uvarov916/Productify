@@ -1,8 +1,8 @@
-body { font:14px Helvetica,Arial,sans-serif; }
+body { font:14px Lucida Grande,Helvetica,Arial,sans-serif; }
   p { max-width:40em; }
   table { margin:2em 0; }
   th, td { padding:0.4em; width:6em; text-align:center; }
-  th { border:1px solid #ccc; border-width:0 1px 1px 0; }
+  th { border:1px solid #E6E6E6; border-width:0 1px 1px 0; }
 
   /* Special styles for the demo tables */
   #table1 td:hover { font-weight:bold; cursor:default; }

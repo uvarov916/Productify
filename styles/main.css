@@ -226,6 +226,7 @@ html, body {
   #photo_block_4 .center h1 {
     font-size: 48px;
     color: white;
+    text-align: center;
     font-family: Georgia;
     line-height: 1.25em;
     margin-top: 35%; }
@@ -235,4 +236,31 @@ html, body {
   float: left;
   width: 81.25%;
   margin: 0 1.04167%;
-  margin-left: 9.375%; }
+  margin-left: 9.375%;
+  margin-top: 50px;
+  margin-bottom: 50px; }
+
+#photo_block_5 {
+  height: 500px;
+  background: url("../img/photo_block_5.png") no-repeat;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 400px; }
+  #photo_block_5 h1 {
+    font-size: 48px;
+    text-align: center;
+    color: white;
+    font-family: Georgia;
+    line-height: 1.25em;
+    margin-top: 160px; }
+
+#photo_block_6 {
+  height: 500px;
+  background: url("../img/photo_block_6.png") no-repeat;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 300px; }
