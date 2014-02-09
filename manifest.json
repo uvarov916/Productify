@@ -1,0 +1,26 @@
+{
+	"background": {
+		"scripts": ["js/jquery.js", "js/background.js"]
+	},
+
+	"manifest_version": 2,
+
+	"name": "Productify",
+	"description": "no decription",
+	"version": "0.1",
+
+	"chrome_url_overrides": {
+      "newtab": "tabpage.html"
+   	},
+
+	"browser_action": {
+		"default_icon": "icon.png",
+		"default_popup": "popup.html"
+	},
+
+	"options_page": "options.html",
+
+	"permissions": [
+		"storage", "tabs", "idle"
+	]
+}

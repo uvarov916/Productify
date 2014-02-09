@@ -1,0 +1,109 @@
+@import "_reset.scss";
+@import "_layout.scss";
+
+@mixin parallax {
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+@mixin photo_block($url) {
+	height: 500px;
+	background: url($url) no-repeat;
+	@include parallax;
+}
+
+#top_menu {
+	height: 50px;
+	background: #1F1F1F;
+	.wrapper {
+		text-align: center;
+		@include column(4);
+		@include push(4);
+		margin-top: 12px;
+
+		a {
+			color: white;
+			@include column(2);
+			@include push(1.5);
+			img {
+				height: 25px;
+			}
+		}
+	}
+
+	.title {
+		position: absolute;
+		height: 50px;
+		vertical-align: middle;
+		font-family: Lucida Grande;
+		font-size: 24px;
+		color: white;
+		left: 20px;
+		top: 12px;
+	}
+}
+
+#photo_block_1 {
+	@include photo_block("../img/photo_block_1.png");
+
+	.text {
+		@include column(12);
+		text-align: center;
+		line-height: 1.25em;
+		margin-top: 200px;
+		vertical-align: middle;
+		font-family: Georgia;
+		font-style: italic;
+		font-size: 48px;
+		color: white;
+	}
+
+	span.scroll {
+		@include column(12);
+		text-align: center;
+		margin-top: 190px;
+		color: white;
+		text-transform: uppercase;
+		font-family: Lucida Grande;
+		font-size: 14px;
+	}
+}
+
+#top_categories {
+	min-height: 330px;
+	.center {
+		.column {
+			text-align: center;
+			@include column(2.4);
+
+			margin-top: 55px;
+
+			h3 {
+				font-family: Lucida Grande;
+				font-size: 16px;
+				margin-bottom: 10px;
+				text-transform: uppercase;
+			}
+
+			h3.category {
+				margin-bottom: 40px;
+			}
+
+			.oval {
+				height: 142px;
+				width: 172px;
+				display: table-cell;
+				vertical-align: middle;
+				background: url('../img/oval.png') center no-repeat;
+				font-size: 30px;
+				color: #9CD377;
+			}
+		}
+	}
+}
+
+#photo_block_2 {
+	@include photo_block("../img/photo_block_1.png");
+}

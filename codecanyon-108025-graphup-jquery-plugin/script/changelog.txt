@@ -1,0 +1,7 @@
+GraphUp Changelog
+-----------------
+
+
+v1.0 - 10 June 2010
+
+	* First release of the GraphUp jQuery Plugin.
