@@ -129,13 +129,13 @@ body {
 		height: 400px;
 	}
 
-	.left, .right {
-		@include column(6);
+	> .center {
+		margin-top: 50px;
 	}
 
 	.left {
+		@include column(6);
 		form {
-			margin-top: 50px;
 			span {
 				display: block;
 				margin-bottom: 10px;
@@ -156,6 +156,20 @@ body {
 				font-size: 1em;
 				margin-top: 5px;
 			}
+		}
+	}
+
+	.right {
+		@include column(5);
+		@include push(1);
+
+		div {
+			margin: 10px 0 0 10px;
+		}
+
+		.no_goals {
+			font-size: 0.8em;
+			color: grey;
 		}
 	}
 

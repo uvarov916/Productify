@@ -164,13 +164,13 @@ body {
   background-attachment: fixed;
   background-size: cover;
   height: 400px; }
-#about .left, #about .right {
+#about > .center {
+  margin-top: 50px; }
+#about .left {
   display: inline;
   float: left;
   width: 47.91667%;
   margin: 0 1.04167%; }
-#about .left form {
-  margin-top: 50px; }
   #about .left form span {
     display: block;
     margin-bottom: 10px; }
@@ -193,3 +193,14 @@ body {
     margin: 0 1.04167%;
     font-size: 1em;
     margin-top: 5px; }
+#about .right {
+  display: inline;
+  float: left;
+  width: 39.58333%;
+  margin: 0 1.04167%;
+  margin-left: 9.375%; }
+  #about .right div {
+    margin: 10px 0 0 10px; }
+  #about .right .no_goals {
+    font-size: 0.8em;
+    color: grey; }
