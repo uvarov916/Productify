@@ -122,6 +122,7 @@ html, body {
     color: white;
     text-transform: uppercase;
     font-family: Lucida Grande;
+    letter-spacing: 1px;
     font-size: 14px; }
 
 #top_categories {
