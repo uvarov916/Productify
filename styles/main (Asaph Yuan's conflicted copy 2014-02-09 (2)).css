@@ -1,0 +1,61 @@
+/*
+Syntax error: Invalid CSS after "		width: 100%": expected ";", was ":"
+        on line 64 of main.scss
+
+59: 		font-size: 48px;
+60: 		color: white;
+61: 	}
+62: 
+63: 	span.scroll {
+64: 		width: 100%:
+65: 		color: white;
+66: 		text-transform: uppercase;
+67: 		font-family: Lucida Grande;
+68: 		font-size: 14px;
+69: 	}
+
+Backtrace:
+main.scss:64
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:1147:in `expected'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:1085:in `expected'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:1080:in `tok!'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:586:in `block in declaration_or_ruleset'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:1123:in `call'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:1123:in `rethrow'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:592:in `declaration_or_ruleset'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:554:in `block_child'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:543:in `block_contents'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:535:in `block'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:529:in `ruleset'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:591:in `block in declaration_or_ruleset'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:1123:in `call'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:1123:in `rethrow'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:592:in `declaration_or_ruleset'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:554:in `block_child'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:546:in `block_contents'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:535:in `block'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:529:in `ruleset'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:553:in `block_child'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:546:in `block_contents'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:82:in `stylesheet'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/scss/parser.rb:27:in `parse'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/engine.rb:342:in `_to_tree'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/engine.rb:315:in `_render'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/engine.rb:262:in `render'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/plugin/compiler.rb:362:in `update_stylesheet'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/plugin/compiler.rb:201:in `each'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/lib/sass/plugin/compiler.rb:283:in `block in watch'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/vendor/listen/lib/listen/multi_listener.rb:108:in `call'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/vendor/listen/lib/listen/multi_listener.rb:108:in `on_change'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/vendor/listen/lib/listen/multi_listener.rb:117:in `block in initialize_adapter'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/vendor/listen/lib/listen/adapter.rb:198:in `call'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/vendor/listen/lib/listen/adapter.rb:198:in `report_changes'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/vendor/listen/lib/listen/adapter.rb:210:in `poll_changed_dirs'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.2.14/vendor/listen/lib/listen/adapters/darwin.rb:38:in `block in start'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Invalid CSS after \"		width: 100%\": expected \";\", was \":\"\A         on line 64 of main.scss\A \A 59: 		font-size: 48px;\A 60: 		color: white;\A 61: 	}\A 62: \A 63: 	span.scroll {\A 64: 		width: 100%:\A 65: 		color: white;\A 66: 		text-transform: uppercase;\A 67: 		font-family: Lucida Grande;\A 68: 		font-size: 14px;\A 69: 	}"; }
