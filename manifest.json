@@ -18,7 +18,7 @@
 		"default_popup": "popup.html"
 	},
 
-	"options_page": "options.html",
+	"options_page": "settings.html",
 
 	"permissions": [
 		"storage", "tabs", "idle"
