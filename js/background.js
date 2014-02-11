@@ -62,7 +62,9 @@ function resetInformation() {
 
 function checkGoals(site) {
 	var key = localStorage[site + "_cat"] + "_goal";
-	if (localStorage[localStorage[site + "_cat"] + "_time"] >= localStorage[key]) {
+	if (parseInt(localStorage[localStorage[site + "_cat"] + "_time"]) > parseInt(localStorage[key])) {
+		console.log("Goal time: " + localStorage[key]);
+		console.log("Category time: " + localStorage[localStorage[site + "_cat"] + "_time"]);
 		chrome.tabs.getSelected(null, function(tab){
 			chrome.tabs.update(tab.id, {url: "../notimeleft.html"});
 		});
