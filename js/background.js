@@ -37,7 +37,7 @@ function resetInformation() {
 	localStorage["vk_vis"] = 0;
 
 
-	localStorage["totalTime"] = 60000;
+	localStorage["totalTime"] = 1000;
 
 	localStorage["work_time"] = 0;
 	localStorage["learning_time"] = 0;
@@ -46,7 +46,7 @@ function resetInformation() {
 	localStorage["email_time"] = 0;
 	localStorage["reference_time"] = 0;
 	localStorage["social_time"] = 0;
-	localStorage["other_time"] = 60000;
+	localStorage["other_time"] = 1000;
 
 	localStorage["dayChecker"] = (new Date()).getDate();
 
@@ -60,9 +60,9 @@ function resetInformation() {
 	}
 }
 
-function checkGoals() {
-	var key = localStorage[currentSite + "_cat"] + "_goal";
-	if (localStorage[localStorage[currentSite + "_cat"] + "_time"] >= localStorage[key]) {
+function checkGoals(site) {
+	var key = localStorage[site + "_cat"] + "_goal";
+	if (localStorage[localStorage[site + "_cat"] + "_time"] >= localStorage[key]) {
 		chrome.tabs.getSelected(null, function(tab){
 			chrome.tabs.update(tab.id, {url: "../notimeleft.html"});
 		});
@@ -170,44 +170,50 @@ function updateCounter() {
 			// console.log("first condition");
 
 			currentSite = cleanedUrl;
-			startTime = (new Date).getTime();
-			assignCategory();
+			if (currentSite !== "") {
+				startTime = (new Date).getTime();
+				assignCategory();
+			}
 		}
 		// if user opened a new website
 		else if (currentSite !== cleanedUrl) {
 
-			// console.log("second condition");
-			
-			var timeSpent = (new Date).getTime() - startTime;
+			if (currentSite !== "") {
+				// console.log("second condition");
+				
+				var timeSpent = (new Date).getTime() - startTime;
 
-			var totalTime;
+				var totalTime;
 
-			// if website wasn't previously stored, adds new field to storage
-			if (localStorage[currentSite] === undefined) {
-				totalTime = timeSpent;
+				// if website wasn't previously stored, adds new field to storage
+				if (localStorage[currentSite] === undefined) {
+					totalTime = timeSpent;
+				}
+				// if website wasn previously stored, updates total time
+				else {
+					totalTime = timeSpent + parseInt(localStorage[currentSite]);
+				}
+
+				localStorage[currentSite] = totalTime;
+				addTimeToCategory(currentSite, timeSpent);
+				localStorage["totalTime"] = parseInt(localStorage["totalTime"]) + timeSpent;
 			}
-			// if website wasn previously stored, updates total time
-			else {
-				totalTime = timeSpent + parseInt(localStorage[currentSite]);
-			}
-
-			localStorage[currentSite] = totalTime;
-			addTimeToCategory(currentSite, timeSpent);
-			localStorage["totalTime"] = parseInt(localStorage["totalTime"]) + timeSpent;
 
 			currentSite = cleanedUrl;
-			if (localStorage[currentSite + "_vis"] === undefined) {
-				localStorage[currentSite + "_vis"] = 1;
+			if (currentSite !== "") {
+				if (localStorage[currentSite + "_vis"] === undefined) {
+					localStorage[currentSite + "_vis"] = 1;
+				}
+				else {
+					localStorage[currentSite + "_vis"] = parseInt(localStorage[currentSite + "_vis"]) + 1;
+				}
+
+
+				checkGoals(currentSite);
+
+				startTime = (new Date).getTime();
+				assignCategory();
 			}
-			else {
-				localStorage[currentSite + "_vis"] = parseInt(localStorage[currentSite + "_vis"]) + 1;
-			}
-
-
-			checkGoals(currentSite);
-
-			startTime = (new Date).getTime();
-			assignCategory();
 		}
 	});
 
