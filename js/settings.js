@@ -24,7 +24,7 @@ $(function () {
 
 	$('#submit').click(function () {
 		var name = $('#choose_category').val() + "_goal";
-		var time = parseInt($('#num_hours').val() * 1000 * 3600);
+		var time = parseInt($('#num_hours').val()) * 1000 * 3600;
 		if (time !== 0) {
 			localStorage[name] = time;
 		}
