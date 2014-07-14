@@ -2,11 +2,18 @@ var selectedId = -1;
 
 //function needs to be implemented
 function trackTime() {
+  //check date
+  //archive data if is next day
+  //get category
+  //update category time
+  //check if category time limit has been reached
+  //if yes, redirect, else allow to continue
   alert('tracking time');
 }
 
 //function needs to be implemented
 function stopTrackTime() {
+  //stop tracking time for that site
   alert('stop tracking time');
 }
 
