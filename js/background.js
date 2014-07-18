@@ -1,254 +1,237 @@
-// for developing purposes
+/*
+
+  Known bugs:
+    1. ...
+    2. ...
+
+
+  To-do:
+    1. ...
+    2. ...
+
+
+  Functions with placeholders:
+    1. getWebsiteCategory(websiteID)
+    2. ...
+
+*/
+
+
+// ---------------------> for developing <---------------------
 localStorage.clear();
 
+
+
+
+/***********************************************************
+  **
+  **    GLOBAL VARIABLES
+  **
+  **********************************************************/
+
+// website that's currently being tracked
 var currentSite = null;
+// time when started tracking the current website
 var startTime = null;
+// ID of the tab that's currently being tracked
+var currentlyTrackingTabID = null;
+// true if extension currently tracks somtething, false otherwise
+var currentlyTracking = false;
 
-// social category
-localStorage["facebook_cat"] = "social";
-localStorage["twitter_cat"] = "social";
-localStorage["plus.google_cat"] = "social";
-localStorage["instagram_cat"] = "social";
-localStorage["linkedin_cat"] = "social";
-localStorage["pinterest_cat"] = "social";
-localStorage["vk_cat"] = "social";
-
-// work category
-localStorage["google_cat"] = "work";
-localStorage["yahoo_cat"] = "work";
-localStorage["bing_cat"] = "work";
+// id of a currently opened tab
+var currentTabID = -1;
 
 
-function resetInformation() {
-
-	// social networks
-	localStorage["facebook"] = 0;
-	localStorage["twitter"] = 0;
-	localStorage["instagram"] = 0;
-	localStorage["linkedin"] = 0;
-	localStorage["pinterest"] = 0;
-	localStorage["vk"] = 0;
-
-	localStorage["facebook_vis"] = 0;
-	localStorage["twitter_vis"] = 0;
-	localStorage["instagram_vis"] = 0;
-	localStorage["linkedin_vis"] = 0;
-	localStorage["pinterest_vis"] = 0;
-	localStorage["vk_vis"] = 0;
+// some shit
+var tabUrl = null;
 
 
-	localStorage["totalTime"] = 1000;
+/***********************************************************
+  **
+  **    TRACKING FUNCTIONS
+  **    
+  **    startTrackTime() - starts tracking current tab
+  **    stopTrackTime() - stops tracking the last website
+  **    restartTracking() - stops old tracking and starts
+  **                         another for a new website
+  **
+  **********************************************************/
 
-	localStorage["work_time"] = 0;
-	localStorage["learning_time"] = 0;
-	localStorage["shopping_time"] = 0;
-	localStorage["entertainment_time"] = 0;
-	localStorage["email_time"] = 0;
-	localStorage["reference_time"] = 0;
-	localStorage["social_time"] = 0;
-	localStorage["other_time"] = 1000;
 
-	localStorage["dayChecker"] = (new Date()).getDate();
 
-	currentSite = null;
-	startTime = null;
+function startTrackTime() {
+  // Not implemented yet:
+  // 1. archive data if is next day (don't remember why need this)
+  // 2. url should be cleaned before saving it to currentSite variable
 
-	for (var i = 0; i < localStorage[length]; i++) {
-		if (Object.keys(localStorage)[i].indexOf('_time') !== -1) {
-			localStorage[Object.keys(localStorage)[i]] = 0;
-		}
-	}
-}
+  // Sacing tracking start time
+  startTime = (new Date()).getTime();
 
-function checkGoals(site) {
-	var key = localStorage[site + "_cat"] + "_goal";
-	if (parseInt(localStorage[localStorage[site + "_cat"] + "_time"]) > parseInt(localStorage[key])) {
-		console.log("Goal time: " + localStorage[key]);
-		console.log("Category time: " + localStorage[localStorage[site + "_cat"] + "_time"]);
-		chrome.tabs.getSelected(null, function(tab){
-			chrome.tabs.update(tab.id, {url: "../notimeleft.html"});
-		});
-	}
-}
+  // Getting url of website to track
+  // NOTE: function is asynchronous, so everything should be in a callback
+  chrome.tabs.query({'currentWindow': true, 'active': true}, function (tabs) {
+    tabUrl = tabs[0].url;
 
-localStorage["allCategories"] = "work,learning,shopping,entertainment,email,reference,social,other";
+    currentSite = tabUrl;
 
-var cat = parseCategories(localStorage["allCategories"]);
-for (var i = 0; i < cat.length; i++) {
-	name = cat + "_time";
-	localStorage[name] = 0;
+    currentlyTracking = true;
+    currentlyTrackingTabID = currentTabID;
+
+    // ---------------------> for developing <---------------------
+    console.log('Started tracking ' + currentSite);
+
+  });
 }
 
 
+function stopTrackTime() {
 
-function addTimeToCategory(website, time) {
-	var catKey = website + "_cat";
-	var category = localStorage[catKey];
+  // ---------------------> for developing <---------------------
+  console.log('Stopping tracking ' + currentSite + " ...");
+  console.log('Time: ' + ((new Date()).getTime() - startTime))
 
-	var name = category + "_time";
-	if (localStorage[name] === undefined) {
-		localStorage[name] = time;
-	}
-	else {
-		localStorage[name] = parseInt(localStorage[name]) + time;
-	}
-}
+  // Not implemented yet:
+  // 1. check if category time limit has been reached
+  //    if yes, redirect, else allow to continue
 
-function timeToString(time) {
-	time = Math.floor(time / 1000);
-	var hours = Math.floor(time / 3600);
-	time = time - hours * 3600;
-	var minutes = Math.floor(time / 60);
-	var seconds = time - minutes * 60;
-	if (hours > 0) {
-		return hours + "h " + minutes + "m"
-	}
-	else {
-		return minutes + "m " + seconds +"s"
-	}
-}
+  // getting category of the website that's being tracked
+  var websiteCategory = getWebsiteCategory(currentSite);
 
-// takes full website's url and returns its name
-function cleanUrl (currentUrl) {
-	currentUrl = currentUrl.substring(currentUrl.indexOf("//") + 2);
-	currentUrl = currentUrl.substring(0, currentUrl.indexOf("/"));
-	
-	// deletes www. from the code
-	if (currentUrl.indexOf("www.") !== -1) {
-		currentUrl = currentUrl.substring(currentUrl.indexOf("www.") + 4);
-	}
-	
-	// deletes TLD
-	currentUrl = currentUrl.substring(0, currentUrl.lastIndexOf('.'));
 
-	return currentUrl;
-}
+  currentlyTracking = false;
+  currentlyTrackingTabID = null;
 
-function parseCategories() {
-	return localStorage["allCategories"].split(",");
-}
-
-function assignCategory() {
-	var name = currentSite + "_cat";
-	if (localStorage[name] === undefined) {
-		//gets category from prompt
-		var category = prompt("Please enter the category of this website:\n1. Work\n2. Learning\n3. Shopping\n4. Entertainment\n5. Email\n6. Social\n7. Reference\n8. Other", "Other");
-		
-		if (category === null) {
-			localStorage[name] = "other";
-		}
-		else {
-			localStorage[name] = category.toLowerCase();
-		}
-
-	}
-
-	console.log(currentSite + ", category: " + localStorage[name]);
-
+  // ---------------------> for developing <---------------------
+  console.log('Stopped tracking');
 }
 
 
-function updateCounter() {
-
-	//n is the day of the month, we use this to reset the data daily
-	var todayDate = (new Date()).getDate();
-	if (todayDate === parseInt(localStorage["dayChecker"])) {
-		console.log("Same day");
-	}
-	else {
-		resetInformation();
-		console.log("Date changed, information reseted");
-	}
-
-
-	chrome.tabs.query({'active': true}, function (tabs) {
-		var cleanedUrl = cleanUrl(tabs[0].url);
-		
-		// console.log("You're now on '" + cleanedUrl + "'!");
-		// console.log("The 'currentSite' = '" + currentSite + "'");
-
-		if (currentSite === null) {
-
-			// console.log("first condition");
-
-			currentSite = cleanedUrl;
-			if (currentSite !== "") {
-				startTime = (new Date).getTime();
-				assignCategory();
-			}
-		}
-		// if user opened a new website
-		else if (currentSite !== cleanedUrl) {
-
-			if (currentSite !== "") {
-				// console.log("second condition");
-				
-				var timeSpent = (new Date).getTime() - startTime;
-
-				var totalTime;
-
-				// if website wasn't previously stored, adds new field to storage
-				if (localStorage[currentSite] === undefined) {
-					totalTime = timeSpent;
-				}
-				// if website wasn previously stored, updates total time
-				else {
-					totalTime = timeSpent + parseInt(localStorage[currentSite]);
-				}
-
-				localStorage[currentSite] = totalTime;
-				addTimeToCategory(currentSite, timeSpent);
-				localStorage["totalTime"] = parseInt(localStorage["totalTime"]) + timeSpent;
-			}
-
-			currentSite = cleanedUrl;
-			if (currentSite !== "") {
-				if (localStorage[currentSite + "_vis"] === undefined) {
-					localStorage[currentSite + "_vis"] = 1;
-				}
-				else {
-					localStorage[currentSite + "_vis"] = parseInt(localStorage[currentSite + "_vis"]) + 1;
-				}
-
-
-				checkGoals(currentSite);
-
-				startTime = (new Date).getTime();
-				assignCategory();
-			}
-		}
-	});
-
-
-	console.log(localStorage);
+function restartTracking() {
+  if (currentlyTracking) {
+    stopTrackTime();
+  }
+  startTrackTime();
 }
 
 
-var updateCounterInterval = 1000 * 2; // 2 seconds
 
-resetInformation();
+/***********************************************************
+  **
+  **    LISTENERS
+  **
+  **    chrome.windows.onFocusChanged - user switches Chrome windows
+  **                                    or leaves Chrome
+  **    chrome.tabs.onUpdated - changing webpage in a tab
+  **    chrome.tabs.onSelectionChanged - user selected another tab
+  **    chrome.tabs.onCreated - user created a new tab
+  **
+  **********************************************************/
 
-function initialize () {
-	window.setInterval(updateCounter, updateCounterInterval);
+
+chrome.windows.onFocusChanged.addListener(function trackWindow(windowID) {
+
+  if (windowID == "-1") {
+    // Chrome became inactive -> stop tracking
+    console.log('Chrome window became inactive, stopping tracking...');
+
+    stopTrackTime();
+  
+  } else {
+    // Chrome became active after being inactive
+    // or user switched to another Chrome window
+    
+    if (currentlyTracking) {
+      // user switched to another Chrome window
+      console.log('User switched to another Chrome window, restarting tracking...');
+      
+      restartTracking();
+    }
+    else {
+      // Chrome window became active 
+      console.log('Chrome window became active, restarting tracking...');
+
+      restartTracking();
+    }
+
+  }
+});
+
+
+chrome.tabs.onUpdated.addListener(function(tabId, props) {
+  // checks if the update was made on a current and if it
+  // was finished
+  if (props.status == "complete" && tabId == currentTabID) {
+    // Tab updates -> restart tracking
+    console.log('Tab was updated, restarting tracking...');
+
+    restartTracking();
+  }
+});
+
+
+chrome.tabs.onSelectionChanged.addListener(function(tabId, props) {
+  // User switched between tabs -> restart tracking
+  console.log('Selection changed, restarting tracking...');
+  currentTabID = tabId;
+
+  restartTracking(); 
+});
+
+
+chrome.tabs.onCreated.addListener(function(tabId, props) {
+  // user opened a new tab -> restart tracking
+  console.log('New tab opened, restarting tracking...');
+
+  currentTabID = tabId;
+  restartTracking();
+});
+
+
+
+
+/***********************************************************
+  **
+  **    HELPER FUNCTIONS
+  **
+  **    getWebsiteCategory(id) - returns category of a website
+  **                             with a given ID
+  **
+  **********************************************************/
+
+
+function getWebsiteCategory(websiteID) {
+  // WARNING: returns random category for now!
+
+  // array with available categories
+  var categories = ['social', 'professional', 'work', 'news'];
+  // random number in range [0, categories.length - 1]
+  var rand = Math.floor((Math.random() * 100) % (categories.length));
+
+  // returns random category from an array
+  return categories[rand];
 }
 
-initialize();
+
+/***********************************************************
+  **
+  **    FROM THE PREVIOUS VERSION
+  **
+  **    idFromUrl(url) - returns id for a given url
+  **
+  **********************************************************/
 
 
+function idFromUrl (currentUrl) {
+  currentUrl = currentUrl.substring(currentUrl.indexOf("//") + 2);
+  currentUrl = currentUrl.substring(0, currentUrl.indexOf("/"));
+  
+  // deletes www. from the code
+  if (currentUrl.indexOf("www.") !== -1) {
+    currentUrl = currentUrl.substring(currentUrl.indexOf("www.") + 4);
+  }
+  
+  // deletes TLD
+  // currentUrl = currentUrl.substring(0, currentUrl.lastIndexOf('.'));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  return currentUrl;
+}
