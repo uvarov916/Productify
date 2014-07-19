@@ -234,7 +234,11 @@ function idFromUrl (currentUrl) {
   if (currentUrl.indexOf("www.") !== -1) {
     currentUrl = currentUrl.substring(currentUrl.indexOf("www.") + 4);
   }
-  
+
+  if (currentUrl.indexOf(".") == -1) {
+    currentUrl = "local";
+  } 
+
   // deletes TLD
   // currentUrl = currentUrl.substring(0, currentUrl.lastIndexOf('.'));
 
