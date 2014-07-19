@@ -72,7 +72,7 @@ function startTrackTime() {
   chrome.tabs.query({'currentWindow': true, 'active': true}, function (tabs) {
     tabUrl = tabs[0].url;
 
-    currentSite = tabUrl;
+    currentSite = idFromUrl(tabUrl);
 
     currentlyTracking = true;
     currentlyTrackingTabID = currentTabID;
@@ -222,10 +222,15 @@ function getWebsiteCategory(websiteID) {
 
 
 function idFromUrl (currentUrl) {
+  // deletes protocol, like 'http://'
   currentUrl = currentUrl.substring(currentUrl.indexOf("//") + 2);
-  currentUrl = currentUrl.substring(0, currentUrl.indexOf("/"));
   
-  // deletes www. from the code
+  // delete all subpages
+  if (currentUrl.indexOf("/") !== -1) {
+    currentUrl = currentUrl.substring(0, currentUrl.indexOf("/"));  
+  }
+  
+  // deletes www. from the url
   if (currentUrl.indexOf("www.") !== -1) {
     currentUrl = currentUrl.substring(currentUrl.indexOf("www.") + 4);
   }
