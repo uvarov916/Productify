@@ -1,8 +1,9 @@
 /*
 
   Known bugs:
-    1. ...
-    2. ...
+    1.  When user switches to another Chrome window, start tracking 2 times
+        (doesn't affect anything)
+    2.  ...
 
 
   To-do:
@@ -18,9 +19,25 @@
 
 
 // ---------------------> for developing <---------------------
-localStorage.clear();
+chrome.storage.local.clear();
 
-
+initialize();
+function initialize() {
+  chrome.storage.local.get('websites', function(items) {
+    if (items.websites == undefined) {
+      chrome.storage.local.set({'websites' : {}}, function() {
+        console.log('Initialized storage for websites data');
+      });
+    }
+  });
+  chrome.storage.local.get('categories', function(items) {
+    if (items.categories == undefined) {
+      chrome.storage.local.set({'categories' : {}}, function() {
+        console.log('Initialized storage for categories data');
+      });
+    }
+  });
+}
 
 
 /***********************************************************
@@ -94,9 +111,9 @@ function stopTrackTime() {
   // 1. check if category time limit has been reached
   //    if yes, redirect, else allow to continue
 
-  // getting category of the website that's being tracked
-  var websiteCategory = getWebsiteCategory(currentSite);
+  var totalTime = (new Date()).getTime() - startTime;
 
+  addNewData(currentSite, totalTime);
 
   currentlyTracking = false;
   currentlyTrackingTabID = null;
@@ -111,6 +128,113 @@ function restartTracking() {
     stopTrackTime();
   }
   startTrackTime();
+}
+
+function addNewData(websiteId, time) {
+  
+  var websiteObject = null;
+  var categoryObject = null;
+  // var websiteCategory = getWebsiteCategory(websiteId);
+
+  getWebsiteCategory(websiteId, function(websiteCategory) {
+
+
+    // Saving new data for the website
+    chrome.storage.local.get('websites', function(items) {
+      item = items.websites[websiteId];
+
+      if (item == null) {
+        
+        // Website not in DB -> creating new object
+        websiteObject = {
+          '_id' : websiteId,
+          'category' : websiteCategory,
+          'total_visits' : 0,
+          'total_time' : 0,
+          'month_visits' : 0,
+          'month_time' : 0,
+          'week_visits' : 0,
+          'week_time' : 0,
+          'day_visits' : 0,
+          'day_time' : 0,
+          'last_visit' : null
+        };
+
+      }
+      else {
+        // Object is already in DB -> use this object
+        websiteObject = item;
+      }
+
+      // Updates visits and time for this website
+      websiteObject = updateTimeAndVisits(websiteObject, time);
+
+      items.websites[websiteId] = websiteObject;
+      
+      // Saving data to storage
+      chrome.storage.local.set(items, function() {
+        console.log('New data for the ' + websiteId + ' was added successfully');
+      }); 
+    });
+
+    // Saving new data for the category
+    chrome.storage.local.get('categories', function(items) {
+      item = items.categories[websiteCategory];
+
+      if (item == null) {
+
+        // Website not in DB -> creating new object
+        categoryObject = {
+          '_id' : websiteCategory,
+          'total_visits' : 0,
+          'total_time' : 0,
+          'month_visits' : 0,
+          'month_time' : 0,
+          'week_visits' : 0,
+          'week_time' : 0,
+          'day_visits' : 0,
+          'day_time' : 0,
+          'last_visit' : null
+        };
+
+      }
+      else {
+        // Object is already in DB -> use this object
+        categoryObject = item;
+      }
+
+      // Updates visits and time for this website
+      categoryObject = updateTimeAndVisits(categoryObject, time);
+
+      items.categories[websiteCategory] = categoryObject;
+      
+      // Saving data to storage
+      chrome.storage.local.set(items, function() {
+        console.log('New data for the ' + websiteCategory + ' category was added successfully');
+      });
+
+    });
+  });
+}
+
+function updateTimeAndVisits(object, time) {
+  
+  // Incrementing number of visits by 1
+  object['total_visits'] += 1;
+  object['month_visits'] += 1;
+  object['week_visits'] += 1;
+  object['day_visits'] += 1;
+
+  // Incrementing time
+  object['total_time'] += time;
+  object['month_time'] += time;
+  object['week_time'] += time;
+  object['day_time'] += time;
+
+  // Updating date for the last of this website
+  object['last_visit'] = (new Date()).getTime();
+
+  return object;
 }
 
 
@@ -199,16 +323,31 @@ chrome.tabs.onCreated.addListener(function(tabId, props) {
   **********************************************************/
 
 
-function getWebsiteCategory(websiteID) {
+function getWebsiteCategory(websiteId, callback) {
   // WARNING: returns random category for now!
 
-  // array with available categories
-  var categories = ['social', 'professional', 'work', 'news'];
-  // random number in range [0, categories.length - 1]
-  var rand = Math.floor((Math.random() * 100) % (categories.length));
+  
+  // Check if category is already saved for this website
+  chrome.storage.local.get('websites', function(items) {
 
-  // returns random category from an array
-  return categories[rand];
+    var websiteObject = items.websites[websiteId];
+
+    if (websiteObject != null) {
+      console.log('RETURNED CATEGORY: ' + websiteObject['category']);
+      return callback(websiteObject['category']);
+    }
+    else {
+      // array with available categories
+      var categories = ['social', 'professional', 'work', 'news'];
+      // random number in range [0, categories.length - 1]
+      var rand = Math.floor((Math.random() * 100) % (categories.length));
+
+      // returns random category from an array
+      console.log('RETURNED CATEGORY: ' + categories[rand]);
+      return callback(categories[rand]);
+    }
+
+  });
 }
 
 
@@ -244,3 +383,4 @@ function idFromUrl (currentUrl) {
 
   return currentUrl;
 }
+
