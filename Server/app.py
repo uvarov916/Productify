@@ -1,21 +1,26 @@
-# import sys
-# import re
+import os
 
 import urllib2
 import json
-import bottle
+from bottle import route, run
 import pymongo
 
+# For local development
+# client = pymongo.MongoClient("localhost", 27017)
 
-client = pymongo.MongoClient("localhost", 27017)
-
+client = pymongo.MongoClient(os.environ.get('MONGOHQ_URL'))
 
 # get a handle to the productify database
-db = client.productify
+# db = client.productify
+db = client.app29346808
+
 websites = db.websites
 
+@route('/')
+def home_page():
+	return 'Hello World!'
 
-@bottle.route('/getwebsitecategory/<website_id>')
+@route('/getwebsitecategory/<website_id>')
 def website_id_from_url(website_id):
 	db_category = get_category_from_db(website_id)
 	if (db_category != 'unassigned'):
@@ -107,6 +112,11 @@ def insert_website_to_db(website_id, category):
 	websites.insert(data)
 
 
+# bottle.debug(True)
+# bottle.run(host='localhost',port='8080')
+run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
 
-bottle.debug(True)
-bottle.run(host='localhost',port='8080')
+
+
+
+
