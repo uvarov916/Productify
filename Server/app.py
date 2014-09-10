@@ -18,7 +18,7 @@ websites = db.websites
 
 @route('/')
 def home_page():
-	return 'Hello World!'
+	return 'The server is running!'
 
 @route('/getwebsitecategory/<website_id>')
 def website_id_from_url(website_id):
@@ -103,12 +103,32 @@ def get_category_from_db(website_id):
 	if (category is None) or (category == ""):
 		return 'unassigned'
 	else:
+		increment_requests_counter(website_id)
 		return category
+
+
+def increment_requests_counter(website_id):
+	query = {'_id' : website_id}
+	doc = websites.find_one(query)
+
+	# Check if the num_requests is defined for the website
+	try:
+		num_requests = doc['num_requests']
+	except:
+		num_requests = 1
+	
+	# Increase number of requests by 1
+	num_requests = num_requests + 1
+
+	#doc['num_requests'] = num_requests
+	data = {'_id': doc['_id'], 'category': doc['category'], 'num_requests': num_requests}
+	websites.update({'_id': doc['_id']}, data)
+
 
 
 
 def insert_website_to_db(website_id, category):
-	data = {'_id': website_id, 'category': category}
+	data = {'_id': website_id, 'category': category, 'num_requests': 1}
 	websites.insert(data)
 
 
