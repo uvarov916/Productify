@@ -17344,13 +17344,61 @@ th.hide-for-touch {
 * .content {
   padding: 0;
   margin-left: 14rem;
-  background-color: #F2F4F7; }
-  /* line 7, ../scss/_content.scss */
+  background-color: #F2F4F7;
+  color: #828282;
+  font-size: 1rem; }
+  /* line 9, ../scss/_content.scss */
   * .content .header {
     height: 60px;
     width: 100%;
     background-color: #FFFFFF; }
-  /* line 13, ../scss/_content.scss */
+  /* line 15, ../scss/_content.scss */
+  * .content .content-area {
+    padding: 2rem; }
+  /* line 23, ../scss/_content.scss */
+  * .content .overview .content-area .stat {
+    position: relative; }
+    /* line 26, ../scss/_content.scss */
+    * .content .overview .content-area .stat span.icon {
+      display: inline-block;
+      width: 38px;
+      height: 38px; }
+      /* line 31, ../scss/_content.scss */
+      * .content .overview .content-area .stat span.icon.time {
+        background: url("../img/time-icon.svg") bottom center no-repeat; }
+      /* line 34, ../scss/_content.scss */
+      * .content .overview .content-area .stat span.icon.website {
+        background: url("../img/website-icon.svg") bottom center no-repeat; }
+    /* line 39, ../scss/_content.scss */
+    * .content .overview .content-area .stat span.description {
+      position: absolute;
+      left: 4rem;
+      top: 0.5rem; }
+      /* line 44, ../scss/_content.scss */
+      * .content .overview .content-area .stat span.description em {
+        font-weight: 500;
+        font-size: 1.25rem;
+        font-style: normal; }
+    /* line 51, ../scss/_content.scss */
+    * .content .overview .content-area .stat.websites-visited .description {
+      top: 0.7rem; }
+    /* line 55, ../scss/_content.scss */
+    * .content .overview .content-area .stat.time-logged {
+      margin-bottom: 3rem; }
+  /* line 61, ../scss/_content.scss */
+  * .content .overview .content-area .last-column .most-visited {
+    margin-bottom: 3rem; }
+  /* line 65, ../scss/_content.scss */
+  * .content .overview .content-area .last-column span {
+    display: block; }
+    /* line 68, ../scss/_content.scss */
+    * .content .overview .content-area .last-column span.title {
+      font-size: 1rem; }
+    /* line 71, ../scss/_content.scss */
+    * .content .overview .content-area .last-column span.description {
+      font-size: 1.25rem;
+      line-height: 1rem; }
+  /* line 80, ../scss/_content.scss */
   * .content h1.title {
     margin: 0;
     padding-top: 1rem;

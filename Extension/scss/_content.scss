@@ -2,12 +2,79 @@
 	padding: 0;
   	margin-left: 14rem;
   	background-color: $content-background-color;
+  	color: $dark-gray-font-color;
+  	font-size: 1rem;
 
 
   	.header {
   		height: 60px;
   		width: 100%;
   		background-color: #FFFFFF;
+  	}
+
+  	.content-area {
+  		padding: 2rem;
+  	}
+
+  	.overview .content-area {
+
+
+
+  		.stat {
+  			position: relative;
+
+  			span.icon {
+	  			display: inline-block;
+	  			width: 38px;
+	  			height: 38px;
+
+	  			&.time {
+	  				background: url('../img/time-icon.svg') bottom center no-repeat;
+	  			}
+	  			&.website {
+	  				background: url('../img/website-icon.svg') bottom center no-repeat;
+	  			}
+	  		}
+
+	  		span.description {
+	  			position: absolute;
+	  			left: 4rem;
+	  			top: 0.5rem;
+
+	  			em {
+	  				font-weight: 500;
+	  				font-size: 1.25rem;
+	  				font-style: normal;
+	  			}
+	  		}
+
+	  		&.websites-visited .description {
+	  			top: 0.7rem;
+	  		}
+
+	  		&.time-logged {
+	  			margin-bottom: 3rem;
+	  		}
+  		}
+
+  		.last-column {
+  			.most-visited {
+  				margin-bottom: 3rem;
+  			}
+  			
+  			span {
+  				display: block;
+
+  				&.title {
+  					font-size: 1rem;
+  				}
+  				&.description {
+  					font-size: 1.25rem;
+  					line-height: 1rem;
+  				}
+  			}
+  		}
+  		
   	}
 
   	h1.title {
