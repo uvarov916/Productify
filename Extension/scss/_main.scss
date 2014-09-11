@@ -1,7 +1,8 @@
 @import "variables";
 @import "mixins";
 
-
-@import "global";
-@import "sidebar";
-@import "content";
+* {
+	@import "global";
+	@import "sidebar";
+	@import "content";
+}

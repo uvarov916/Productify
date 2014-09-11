@@ -40,7 +40,11 @@ def get_new_category_from_api(website_id):
 	response = urllib2.urlopen(url)
 	
 	parsed = json.loads(response.read())
-	full_category = parsed['Category']
+	
+	try:
+		full_category = parsed['Category']
+	except:
+		return 'unassigned'
 
 	# for testing purposes
 	print 'Full category is ' + full_category
@@ -48,7 +52,7 @@ def get_new_category_from_api(website_id):
 	category = clean_category(full_category)
 
 	# for testing purposes
-	print 'Cleaned category is ' + category
+	# print 'Cleaned category is ' + category
 
 	return category
 
@@ -70,20 +74,21 @@ def clean_category(full_category):
 
 	if (short_category == 'Books_and_Literature'):
 		return 'Books'
-	if (short_category == 'Business_and_Industry'):
+	elif (short_category == 'Business_and_Industry'):
 		return 'Business'
-	if (short_category == 'Internet_and_Telecom'):
+	elif (short_category == 'Internet_and_Telecom'):
 		if (second_part == 'Chats_and_Forums') or (second_part == 'Social_Network'):
 			return 'Social'
 		elif (second_part == "Search_Engine"):
 			return 'Search'
 		else:
 			return 'Internet_and_Telecom'
-	if (short_category == 'News_and_Media'):
+	elif (short_category == 'News_and_Media'):
 		return 'News'
-	if (short_category == 'Pets_and_Animals'):
+	elif (short_category == 'Pets_and_Animals'):
 		return 'Animals'
-	return short_category
+	else:
+		return short_category
 
 
 
@@ -129,12 +134,19 @@ def increment_requests_counter(website_id):
 
 def insert_website_to_db(website_id, category):
 	data = {'_id': website_id, 'category': category, 'num_requests': 1}
-	websites.insert(data)
+	
+	try:
+		websites.insert(data)
+	except:
+		websites.update({'_id': website_id}, data)
 
 
 # bottle.debug(True)
 # bottle.run(host='localhost',port='8080')
 run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+
+
+
 
 
 
