@@ -113,7 +113,10 @@ function stopTrackTime() {
 
   var totalTime = (new Date()).getTime() - startTime;
 
-  addNewData(currentSite, totalTime);
+  if (currentSite !== 'local') {
+    addNewData(currentSite, totalTime);
+  }
+  
 
   currentlyTracking = false;
   currentlyTrackingTabID = null;

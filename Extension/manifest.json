@@ -1,6 +1,6 @@
 {
 	"background": {
-		"scripts": ["js/jquery.js", "js/background.js"]
+		"scripts": ["bower_components/jquery/dist/jquery.min.js", "js/background.js"]
 	},
 
 	"manifest_version": 2,
@@ -18,7 +18,7 @@
 		"default_popup": "popup.html"
 	},
 
-	"options_page": "settings.html",
+	// "options_page": "settings.html",
 
 	"permissions": [
 		"storage", "unlimitedStorage", "tabs", "idle"

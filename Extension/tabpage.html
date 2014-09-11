@@ -1,82 +1,78 @@
-<!-- Created by Ivan Uvarov and Asaph Yuan -->
-<!DOCTYPE HTML>
-	<html>
-		<head>
-			<meta charset="UTF-8">
-			<title>Productify</title>
-			<link rel="stylesheet" href="styles/main.css">
-			<link rel="stylesheet" href="styles/tabpage.css">
-			<script src="js/jquery.js" type="text/javascript"></script>
-			<script src="js/amcharts.js" type="text/javascript" ></script>
-			<script src="js/pie.js" type="text/javascript" ></script>
-			<script src="js/tabpage.js" type="text/javascript"></script>
-		</head>
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productify</title>
+    <link rel="stylesheet" href="css/app.css" />
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <script src="js/overview.js"></script>
+  </head>
+  <body>
 
-		<body>
+    <div class="main-part sidebar">
+    	<h1 class="name text-center">Productify</h1>
 
-			<div id="top_menu">
+      <ul class="side-nav">
+        <li class="active">
+          <span class="active-flag"></span>
+          <a href="#">Overview</a>
+        </li>
+        <li>
+          <span class="active-flag"></span>
+          <a href="#">Stats</a>
+        </li>
+        <li>
+          <span class="active-flag"></span>
+          <a href="#">Goals</a>
+        </li>
+        <li>
+          <span class="active-flag"></span>
+          <a href="#">Settings</a>
+        </li>
+      </ul>
 
-				<a href="tabpage.html"><div class="title">Productify</div></a>
+      <a href="#" class="button alert no-distraction">No distraction mode</a>
 
-				<div class="center">
-					<div class="wrapper">
-						<a class="home" href="tabpage.html"><img src="../img/home.png"></a>
-						<a class="statistics" href="stats.html"><img src="../img/stats.png"></a>
-						<a class="settings" href="settings.html"><img src="../img/settings.png"></a>
-					</div>
-				</div>
-			</div>
+    </div>
 
-			<div id="photo_block_1">
-				<div class="center">
-					<div class="text">Motivation is the key to success.</div>
-					<a href="#top_categories"><span class="scroll">Scroll down to see more</span></a>
-				</div>
-			</div>
+    <div class="main-part content">
+      <section class="overview">
+        <div class="header">
+          <h1 class="title">Overview</h1>
+        </div>
+        <div class="content-area">
+          <div class="row">
+            <div class="first-column medium-4 columns text-left">
+              <div class="time-logged stat">
+                <span class="time icon"></span>
+                <span class="description"><em></em> hours logged</span>
+              </div>
+              <div class="websites-visited stat">
+                <span class="website icon"></span>
+                <span class="description"><em></em> websites visited</span>
+              </div>
+            </div>
+            <div class="second-column medium-4 columns text-center">
+              Test
+            </div>
+            <div class="last-column medium-4 columns text-right">
+              <div class="most-visited">
+                <span class="title">most visited</span>
+                <span class="description"></span>
+              </div>
+              <div class="most-time">
+                <span class="title">most time</span>
+                <span class="description"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
-			<div id="top_categories">
-				<div class="center">
-
-					<div id="div1" class="column">
-						<h3 class="percent">32%</h3>
-						<h3 class="category">hello</h3>
-						<div class="oval">hello</div>
-					</div>
-
-					<div id="div2" class="column">
-						<h3 class="percent">32%</h3>
-						<h3 class="category">hello</h3>
-						<div class="oval">hello</div>
-					</div>
-
-					<div id="div3" class="column">
-						<h3 class="percent">32%</h3>
-						<h3 class="category">hello</h3>
-						<div class="oval">hello</div>
-					</div>
-
-					<div id="div4" class="column">
-						<h3 class="percent">32%</h3>
-						<h3 class="category">hello</h3>
-						<div class="oval">hello</div>
-					</div>
-
-					<div id="div5" class="column">
-						<h3 class="percent">32%</h3>
-						<h3 class="category">hello</h3>
-						<div class="oval">hello</div>
-					</div>
-
-				</div> <!-- .center -->
-			</div>
-
-			<div id="photo_block_2">
-			</div>
-
-			<div class="center">
-				<div id="chartdiv">
-				</div><!-- #chartdiv -->	
-			</div><!-- .center -->
-		</body>
-
-	</html>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/foundation/js/foundation.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
