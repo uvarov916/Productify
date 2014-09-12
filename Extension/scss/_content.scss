@@ -84,4 +84,68 @@
   		font-size: 1.375rem;
   		text-transform: uppercase;
   	}
+
+
+    .top-categories .content-area {
+      padding-top: 4rem;
+
+      .first {
+        .color-icon {
+          right: 0;
+        }
+
+        .text {
+          margin-right: 30px;
+        }
+      }
+
+      .pie-stat {
+        position: relative;
+        margin-bottom: 1rem;
+
+        .color-icon {
+          display: inline-block;
+          position: absolute;
+          top: 16px;
+          width: 12px;
+          height: 12px;
+        }
+
+        &.first .color-icon {
+          background-color: #F7464A;
+        }
+        &.second .color-icon {
+          background-color: #568DCD;
+        }
+        &.third .color-icon {
+          background-color: #46BFBD;
+        }
+        &.fourth .color-icon {
+          background-color: #FDB45C;
+        }
+        &.fifth .color-icon {
+          background-color: #949FB1;
+        }
+        &.sixth .color-icon {
+          background-color: #4D5360;
+        }
+
+        .text {
+          display: inline-block;
+          margin-left: 30px;
+
+          span {
+            display: block;
+
+            &.name {
+              font-size: 1.125rem;
+            }
+            &.time {
+              font-size: 0.75rem;
+              line-height: 0.75rem;
+            }
+          }
+        }
+      }
+    }
 }

@@ -6,6 +6,7 @@
     <title>Productify</title>
     <link rel="stylesheet" href="css/app.css" />
     <script src="bower_components/modernizr/modernizr.js"></script>
+    <script src="js/Chart.js"></script>
     <script src="js/overview.js"></script>
   </head>
   <body>
@@ -69,6 +70,70 @@
           </div>
         </div>
       </section>
+
+      <section class="top-categories">
+        <div class="header">
+          <h1 class="title">Top categories</h1>
+        </div>
+        <div class="content-area">
+          <div class="row">
+            <div class="medium-3 columns text-right first">
+              <div class="pie-stat first">
+                <span class="color-icon"></span>
+                <div class="text">
+                  <span class="name">-</span>
+                  <span class="time">0m / 0%</span>
+                </div>
+              </div>
+
+              <div class="pie-stat second">
+                <span class="color-icon"></span>
+                <div class="text">
+                  <span class="name">0</span>
+                  <span class="time">0m / 0%</span>
+                </div>
+              </div>
+
+              <div class="pie-stat third">
+                <span class="color-icon"></span>
+                <div class="text">
+                  <span class="name">-</span>
+                  <span class="time">0m / 0%</span>
+                </div>
+              </div>
+            </div>
+            <div class="medium-4 medium-offset-1 columns text-center">
+              <canvas id="myChart" width="200" height="200"></canvas>
+            </div>
+            <div class="medium-3 medium-offset-1 columns text-left last">
+              <div class="pie-stat fourth">
+                <span class="color-icon"></span>
+                <div class="text">
+                  <span class="name">-</span>
+                  <span class="time">0m / 0%</span>
+                </div>
+              </div>
+
+              <div class="pie-stat fifth">
+                <span class="color-icon"></span>
+                <div class="text">
+                  <span class="name">-</span>
+                  <span class="time">0m / 0%</span>
+                </div>
+              </div>
+
+              <div class="pie-stat sixth">
+                <span class="color-icon"></span>
+                <div class="text">
+                  <span class="name">-</span>
+                  <span class="time">0m / 0%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>

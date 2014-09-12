@@ -17405,3 +17405,55 @@ th.hide-for-touch {
     padding-left: 2rem;
     font-size: 1.375rem;
     text-transform: uppercase; }
+  /* line 89, ../scss/_content.scss */
+  * .content .top-categories .content-area {
+    padding-top: 4rem; }
+    /* line 93, ../scss/_content.scss */
+    * .content .top-categories .content-area .first .color-icon {
+      right: 0; }
+    /* line 97, ../scss/_content.scss */
+    * .content .top-categories .content-area .first .text {
+      margin-right: 30px; }
+    /* line 102, ../scss/_content.scss */
+    * .content .top-categories .content-area .pie-stat {
+      position: relative;
+      margin-bottom: 1rem; }
+      /* line 106, ../scss/_content.scss */
+      * .content .top-categories .content-area .pie-stat .color-icon {
+        display: inline-block;
+        position: absolute;
+        top: 16px;
+        width: 12px;
+        height: 12px; }
+      /* line 114, ../scss/_content.scss */
+      * .content .top-categories .content-area .pie-stat.first .color-icon {
+        background-color: #F7464A; }
+      /* line 117, ../scss/_content.scss */
+      * .content .top-categories .content-area .pie-stat.second .color-icon {
+        background-color: #568DCD; }
+      /* line 120, ../scss/_content.scss */
+      * .content .top-categories .content-area .pie-stat.third .color-icon {
+        background-color: #46BFBD; }
+      /* line 123, ../scss/_content.scss */
+      * .content .top-categories .content-area .pie-stat.fourth .color-icon {
+        background-color: #FDB45C; }
+      /* line 126, ../scss/_content.scss */
+      * .content .top-categories .content-area .pie-stat.fifth .color-icon {
+        background-color: #949FB1; }
+      /* line 129, ../scss/_content.scss */
+      * .content .top-categories .content-area .pie-stat.sixth .color-icon {
+        background-color: #4D5360; }
+      /* line 133, ../scss/_content.scss */
+      * .content .top-categories .content-area .pie-stat .text {
+        display: inline-block;
+        margin-left: 30px; }
+        /* line 137, ../scss/_content.scss */
+        * .content .top-categories .content-area .pie-stat .text span {
+          display: block; }
+          /* line 140, ../scss/_content.scss */
+          * .content .top-categories .content-area .pie-stat .text span.name {
+            font-size: 1.125rem; }
+          /* line 143, ../scss/_content.scss */
+          * .content .top-categories .content-area .pie-stat .text span.time {
+            font-size: 0.75rem;
+            line-height: 0.75rem; }

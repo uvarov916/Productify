@@ -19,7 +19,7 @@
 
 
 // ---------------------> for developing <---------------------
-chrome.storage.local.clear();
+//chrome.storage.local.clear();
 
 initialize();
 function initialize() {
@@ -353,9 +353,9 @@ function getWebsiteCategory(websiteId, callback) {
       $.ajax({url:url,success:function(result){
           category = result.trim();
           console.log(category);
-      }});
 
-      return callback(category);
+          return callback(category);
+      }});
 
     }
 
