@@ -32,12 +32,34 @@ chrome.storage.local.get('websites', function(items) {
 
   }
   
-  $('.overview .time-logged .description em').text(totalTimeLogged);
+  $('.overview .time-logged .description').html(formatTime(totalTimeLogged));
   $('.overview .websites-visited .description em').text(numberOfWebsitesVisited);
   $('.overview .most-visited .description').text(maxVisits_website);
   $('.overview .most-time .description').text(maxTime_website);
 });
 
+function formatTime(timeInMilliseconds) {
+  var timeInSeconds = Math.floor(timeInMilliseconds / 1000);
+  var timeInMinutes = Math.floor(timeInSeconds / 60);
+
+  if (timeInMinutes < 60) {
+    if (timeInMinutes == 1) {
+      return "<em>" + timeInMinutes + "</em> minute logged";
+    }
+    else {
+      return "<em>" + timeInMinutes + "</em> minutes logged";
+    }
+  }
+  else {
+    var timeInHours = Math.floor(timeInMinutes / 60);
+    if (timeInHours == 1) {
+      return "<em>" + timeInHours + "</em> hour logged";
+    }
+    else {
+      return "<em>" + timeInHours + "</em> hours logged";
+    }
+  }
+}
 
 
 
