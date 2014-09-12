@@ -340,14 +340,23 @@ function getWebsiteCategory(websiteId, callback) {
       return callback(websiteObject['category']);
     }
     else {
-      // array with available categories
-      var categories = ['social', 'professional', 'work', 'news'];
-      // random number in range [0, categories.length - 1]
-      var rand = Math.floor((Math.random() * 100) % (categories.length));
+      // // array with available categories
+      // var categories = ['social', 'professional', 'work', 'news'];
+      // // random number in range [0, categories.length - 1]
+      // var rand = Math.floor((Math.random() * 100) % (categories.length));
 
-      // returns random category from an array
-      console.log('RETURNED CATEGORY: ' + categories[rand]);
-      return callback(categories[rand]);
+      // // returns random category from an array
+      // console.log('RETURNED CATEGORY: ' + categories[rand]);
+      // 
+      var category = "undefined"
+      var url = "http://productify.herokuapp.com/getwebsitecategory/"+websiteId;
+      $.ajax({url:url,success:function(result){
+          category = result.trim();
+          console.log(category);
+      }});
+
+      return callback(category);
+
     }
 
   });
