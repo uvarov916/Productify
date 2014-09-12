@@ -37,13 +37,20 @@ def get_new_category_from_api(website_id):
 	print 'Requesting new category...'
 
 	url = "http://api.similarweb.com/Site/" + website_id + "/v2/category?Format=JSON&UserKey=a6fd04d833f2c28ce7c30dc957bf481e"
-	response = urllib2.urlopen(url)
 	
+	try:
+		response = urllib2.urlopen(url)
+	except:
+		return 'unassigned'
+
 	parsed = json.loads(response.read())
 	
 	try:
 		full_category = parsed['Category']
 	except:
+		return 'unassigned'
+
+	if ((full_category == "") or full_category == None):
 		return 'unassigned'
 
 	# for testing purposes
