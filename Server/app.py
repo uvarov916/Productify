@@ -57,6 +57,7 @@ def get_new_category_from_api(website_id):
 	print 'Full category is ' + full_category
 
 	category = clean_category(full_category)
+	category = category.replace("_", " ")
 
 	# for testing purposes
 	# print 'Cleaned category is ' + category
