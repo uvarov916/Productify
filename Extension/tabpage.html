@@ -6,137 +6,70 @@
     <title>Productify</title>
     <link rel="stylesheet" href="css/app.css" />
     <script src="bower_components/modernizr/modernizr.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="js/Chart.js"></script>
-    <script src="js/overview.js"></script>
   </head>
   <body>
 
-    <div class="main-part sidebar">
-    	<h1 class="name text-center">Productify</h1>
-
-      <ul class="side-nav">
-        <li class="active">
-          <span class="active-flag"></span>
-          <a href="#">Overview</a>
-        </li>
-        <li>
-          <span class="active-flag"></span>
-          <a href="#">Stats</a>
-        </li>
-        <li>
-          <span class="active-flag"></span>
-          <a href="#">Goals</a>
-        </li>
-        <li>
-          <span class="active-flag"></span>
-          <a href="#">Settings</a>
-        </li>
-      </ul>
-
-      <a href="#" class="button alert no-distraction">No distraction mode</a>
-
-    </div>
-
-    <div class="main-part content">
-      <section class="overview">
-        <div class="header">
-          <h1 class="title">Overview</h1>
-        </div>
-        <div class="content-area">
-          <div class="row">
-            <div class="first-column medium-4 columns text-left">
-              <div class="time-logged stat">
-                <span class="time icon"></span>
-                <span class="description"><em>0</em> minutes logged</span>
-              </div>
-              <div class="websites-visited stat">
-                <span class="website icon"></span>
-                <span class="description"><em>0</em> websites visited</span>
-              </div>
-            </div>
-            <div class="second-column medium-4 columns text-center">
-              Test
-            </div>
-            <div class="last-column medium-4 columns text-right">
-              <div class="most-visited">
-                <span class="title">most visited</span>
-                <span class="description">-</span>
-              </div>
-              <div class="most-time">
-                <span class="title">most time</span>
-                <span class="description">-</span>
-              </div>
-            </div>
-          </div>
+    <section class="header">
+      <section class="top-menu">
+        <div class="row text-right">
+          <a href="#" class="button">Enter focus mode</a>
         </div>
       </section>
 
-      <section class="top-categories">
-        <div class="header">
-          <h1 class="title">Top categories</h1>
+      <div class="row text-center">
+        <h1 class="title">Productify</h1>
+      </div>
+
+      <div class="bottom-menu">
+        <div class="row">
+          <div class="medium-2 columns text-left left">
+            <a href="#" class="active">Day</a>
+          </div>
+          
+          <div class="medium-2 columns text-left left">
+            <a href="#" class="">Week</a>
+          </div>
+
+          <div class="medium-2 columns text-right left medium-offset-4">
+            <a href="#" class="">Month</a>
+          </div>
+
+          <div class="medium-2 columns text-right left">
+            <a href="#" class="">All time</a>
+          </div>
+
         </div>
-        <div class="content-area">
-          <div class="row">
-            <div class="medium-3 columns text-right first">
-              <div class="pie-stat first">
-                <span class="color-icon"></span>
-                <div class="text">
-                  <span class="name">-</span>
-                  <span class="time">0m / 0%</span>
-                </div>
-              </div>
+      </div>
+    </section>
 
-              <div class="pie-stat second">
-                <span class="color-icon"></span>
-                <div class="text">
-                  <span class="name">0</span>
-                  <span class="time">0m / 0%</span>
-                </div>
-              </div>
+    <section class="overview-stats">
+      <div class="row">
+        <div class="medium-4 columns text-left">
+          <div class="time-logged stat">
+            <span class="time icon"></span>
+            <span class="description"><em>0</em> minutes logged</span>
+          </div>
 
-              <div class="pie-stat third">
-                <span class="color-icon"></span>
-                <div class="text">
-                  <span class="name">-</span>
-                  <span class="time">0m / 0%</span>
-                </div>
-              </div>
-            </div>
-            <div class="medium-4 medium-offset-1 columns text-center">
-              <canvas id="myChart" width="200" height="200"></canvas>
-            </div>
-            <div class="medium-3 medium-offset-1 columns text-left last">
-              <div class="pie-stat fourth">
-                <span class="color-icon"></span>
-                <div class="text">
-                  <span class="name">-</span>
-                  <span class="time">0m / 0%</span>
-                </div>
-              </div>
-
-              <div class="pie-stat fifth">
-                <span class="color-icon"></span>
-                <div class="text">
-                  <span class="name">-</span>
-                  <span class="time">0m / 0%</span>
-                </div>
-              </div>
-
-              <div class="pie-stat sixth">
-                <span class="color-icon"></span>
-                <div class="text">
-                  <span class="name">-</span>
-                  <span class="time">0m / 0%</span>
-                </div>
-              </div>
-            </div>
+          <div class="most-visited">
+            <span class="title">most visited</span>
+            <span class="description">-</span>
           </div>
         </div>
-      </section>
 
-    </div>
+        <div class="medium-4 columns text-center">
+          <div class="circle">
+            <span class="productivity-score">100</span>
+          </div>
+        </div>
 
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <div class="medium-4 columns text-right">
+          Test
+        </div>
+      </div>
+    </section>
+
     <script src="bower_components/foundation/js/foundation.min.js"></script>
     <script src="js/app.js"></script>
   </body>

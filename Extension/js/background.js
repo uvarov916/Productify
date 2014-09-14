@@ -19,7 +19,7 @@
 
 
 // ---------------------> for developing <---------------------
-//chrome.storage.local.clear();
+chrome.storage.local.clear();
 
 initialize();
 function initialize() {
