@@ -27,7 +27,7 @@
   .bottom-menu {
     height: 50px;
     background: $white-transparent-background;
-    margin-top: 5rem;
+    margin-top: 8rem;
 
     a {
       display: block;
@@ -64,6 +64,68 @@
       top: 7rem;
     }
   }
+
+  .stat {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: $dark-gray-font-color;
+
+    span.icon {
+      display: inline-block;
+      width: 38px;
+      height: 38px;
+
+      &.time {
+        background: url('../img/time-icon.svg') bottom center no-repeat;
+      }
+      &.website {
+        background: url('../img/website-icon.svg') bottom center no-repeat;
+      }
+    }
+
+
+    span.description {
+      position: absolute;
+      top: 0.5rem;
+
+      em {
+        font-weight: 500;
+        font-size: 1.25rem;
+        font-style: normal;
+      }
+    }
+
+    &.websites-visited {
+      .description {
+        right: 4rem;
+        top: 0.7rem;
+      }
+    }
+    &.time-logged {
+      .description {
+        left: 4rem;
+      }
+    }
+  }
+
+  .most-visited, .most-time {
+    color: $dark-gray-font-color;
+    margin-bottom: 3rem;
+
+    span {
+      display: block;
+
+      &.title {
+        font-size: 1rem;
+      }
+      &.description {
+        font-size: 1.25rem;
+        line-height: 1rem;
+      }
+    }
+  }
+  
 }
 
 

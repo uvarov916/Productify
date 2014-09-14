@@ -17298,7 +17298,7 @@ th.hide-for-touch {
   * .header .bottom-menu {
     height: 50px;
     background: rgba(249, 249, 249, 0.7);
-    margin-top: 5rem; }
+    margin-top: 8rem; }
     /* line 32, ../scss/_content.scss */
     * .header .bottom-menu a {
       display: block;
@@ -17328,3 +17328,50 @@ th.hide-for-touch {
       font-size: 5rem;
       color: #6F6F6F;
       top: 7rem; }
+  /* line 68, ../scss/_content.scss */
+  * .overview-stats .stat {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: #6F6F6F; }
+    /* line 74, ../scss/_content.scss */
+    * .overview-stats .stat span.icon {
+      display: inline-block;
+      width: 38px;
+      height: 38px; }
+      /* line 79, ../scss/_content.scss */
+      * .overview-stats .stat span.icon.time {
+        background: url("../img/time-icon.svg") bottom center no-repeat; }
+      /* line 82, ../scss/_content.scss */
+      * .overview-stats .stat span.icon.website {
+        background: url("../img/website-icon.svg") bottom center no-repeat; }
+    /* line 88, ../scss/_content.scss */
+    * .overview-stats .stat span.description {
+      position: absolute;
+      top: 0.5rem; }
+      /* line 92, ../scss/_content.scss */
+      * .overview-stats .stat span.description em {
+        font-weight: 500;
+        font-size: 1.25rem;
+        font-style: normal; }
+    /* line 100, ../scss/_content.scss */
+    * .overview-stats .stat.websites-visited .description {
+      right: 4rem;
+      top: 0.7rem; }
+    /* line 106, ../scss/_content.scss */
+    * .overview-stats .stat.time-logged .description {
+      left: 4rem; }
+  /* line 112, ../scss/_content.scss */
+  * .overview-stats .most-visited, * .overview-stats .most-time {
+    color: #6F6F6F;
+    margin-bottom: 3rem; }
+    /* line 116, ../scss/_content.scss */
+    * .overview-stats .most-visited span, * .overview-stats .most-time span {
+      display: block; }
+      /* line 119, ../scss/_content.scss */
+      * .overview-stats .most-visited span.title, * .overview-stats .most-time span.title {
+        font-size: 1rem; }
+      /* line 122, ../scss/_content.scss */
+      * .overview-stats .most-visited span.description, * .overview-stats .most-time span.description {
+        font-size: 1.25rem;
+        line-height: 1rem; }
