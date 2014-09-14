@@ -9,12 +9,18 @@
     background: $white-transparent-background;
 
     a {
-      background: $main-pink;
       font-family: $main-font-stack;
       font-size: 1.25rem;
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
       margin-top: 0.8rem;
+
+      &.on {
+        background-color: $light-blue-font-color;
+      }
+      &.off {
+        background-color: $main-pink;
+      }
     }
   }
 

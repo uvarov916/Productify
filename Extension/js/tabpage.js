@@ -179,10 +179,10 @@ function loadFocusModeInfo() {
   chrome.storage.local.get('settings', function(items) {
     var settings = items.settings;
     if (settings.focus) {
-      $(".button.focus-mode").text("Exit focus mode");
+      $(".button.focus-mode").text("Exit focus mode").removeClass("off").addClass("on");
     }
     else {
-      $(".button.focus-mode").text("Enter focus mode");
+      $(".button.focus-mode").text("Enter focus mode").removeClass("on").addClass("off");
     }
   });
 }
@@ -216,12 +216,12 @@ $( document ).ready(function() {
 
         if (settings.focus) {
           // Currently in focus mode
-          $(".button.focus-mode").text("Enter focus mode");
+          $(".button.focus-mode").text("Enter focus mode").removeClass("on").addClass("off");
           settings.focus = false;
         }
         else {
           // Not in focused mode
-          $(".button.focus-mode").text("Exit focus mode");
+          $(".button.focus-mode").text("Exit focus mode").removeClass("off").addClass("on");
           settings.focus = true;
         }
         items.settings = settings;
