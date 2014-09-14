@@ -37,6 +37,7 @@ var totalTimeLogged = 0;
 function loadData(timeFrameRequested) {
   printProductivityScore(timeFrameRequested);
   printMainStats(timeFrameRequested);
+  loadFocusModeInfo();
 }
 
 loadData("day");
@@ -174,6 +175,17 @@ function printProductivityScore(timeFrameRequested) {
 
   });
 }
+function loadFocusModeInfo() {
+  chrome.storage.local.get('settings', function(items) {
+    var settings = items.settings;
+    if (settings.focus) {
+      $(".button.focus-mode").text("Exit focus mode");
+    }
+    else {
+      $(".button.focus-mode").text("Enter focus mode");
+    }
+  });
+}
 
 
 $( document ).ready(function() {
@@ -194,6 +206,30 @@ $( document ).ready(function() {
         loadData("all");
       }
 
+
+      event.preventDefault();
+    });
+
+    $(".button.focus-mode").click(function () {
+      chrome.storage.local.get('settings', function(items) {
+        var settings = items.settings;
+
+        if (settings.focus) {
+          // Currently in focus mode
+          $(".button.focus-mode").text("Enter focus mode");
+          settings.focus = false;
+        }
+        else {
+          // Not in focused mode
+          $(".button.focus-mode").text("Exit focus mode");
+          settings.focus = true;
+        }
+        items.settings = settings;
+
+        chrome.storage.local.set(items, function() {
+          console.log('New data stored for settings');
+        });
+      });
 
       event.preventDefault();
     });

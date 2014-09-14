@@ -50,6 +50,17 @@ function initialize() {
       });
     }
   });
+  chrome.storage.local.get('settings', function(items) {
+    if (items.settings == undefined) {
+      var temp = {
+        "focus" : false 
+      }
+      chrome.storage.local.set({'settings' : temp}, function() {
+        console.log('Initialized storage for settings');
+      });
+    }
+  });
+
 }
 
 
@@ -75,6 +86,18 @@ var currentTabID = -1;
 // some shit
 var tabUrl = null;
 
+var unproductiveCategories = [
+  "Gambling",
+  "Games",
+  "Internet and Telecom",
+  "Social",
+  "People and Society",
+  "Sports",
+  "Shopping",
+  "Adult",
+  "News and Media",
+  "Arts and Entertainment"
+];
 
 /***********************************************************
   **
@@ -87,6 +110,28 @@ var tabUrl = null;
   **
   **********************************************************/
 
+
+function checkForFocusMode() {
+  chrome.storage.local.get('settings', function(items) {
+    var settings = items.settings;
+    if (settings.focus) {
+      
+      chrome.tabs.query({'currentWindow': true, 'active': true}, function (tabs) {
+        tabUrl = tabs[0].url;
+        currentSite = idFromUrl(tabUrl);
+        
+        getWebsiteCategory(currentSite, function (category) {
+          if ($.inArray(category, unproductiveCategories) > -1) {
+            chrome.tabs.getSelected(null, function(tab){
+              chrome.tabs.update(tab.id, {url: "../notimeleft.html"});
+            });
+          }
+        });
+
+      });
+    }
+  });
+}
 
 
 function startTrackTime() {
@@ -103,6 +148,8 @@ function startTrackTime() {
     tabUrl = tabs[0].url;
 
     currentSite = idFromUrl(tabUrl);
+
+
 
     currentlyTracking = true;
     currentlyTrackingTabID = currentTabID;
@@ -142,6 +189,7 @@ function stopTrackTime() {
 
 
 function restartTracking() {
+  checkForFocusMode();
   if (currentlyTracking) {
     stopTrackTime();
   }
@@ -328,7 +376,6 @@ function resetTimeFor(timeFrame) {
   **    chrome.tabs.onCreated - user created a new tab
   **
   **********************************************************/
-
 
 chrome.windows.onFocusChanged.addListener(function trackWindow(windowID) {
 
