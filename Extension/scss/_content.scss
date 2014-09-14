@@ -14,6 +14,7 @@
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
       margin-top: 0.8rem;
+      margin-right: 1rem;
 
       &.on {
         background-color: $light-blue-font-color;
@@ -131,13 +132,65 @@
       }
       &.description {
         font-size: 1.25rem;
-        line-height: 1rem;
+        line-height: 1.5rem;
       }
     }
   }
   
 }
 
+
+.category-stats {
+  padding-top: 6rem;
+
+  .label {
+    display: block;
+    margin: 0 auto;
+    width: 50px;
+    height: 10px;
+    margin-bottom: 1rem;
+  }
+
+
+  
+  .description {
+    color: $dark-gray-font-color;
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
+
+  .category-bar {
+    height: 50px;
+    margin-top: 5rem;
+    margin-bottom: -10px;
+
+    > div {
+      height: 100%;
+      display: inline-block;
+      margin-right: -4px;
+      margin-bottom: -6px;
+    }
+  }
+
+  .category-bar .first, .first span.label {
+    background-color: rgba(17, 84, 127, .5);
+  }
+  .category-bar .second, .second span.label {
+    background-color: rgba(110, 197, 255, .5);
+  }
+  .category-bar .third, .third span.label {
+    background-color: rgba(33, 167, 255, .5);
+  }
+  .category-bar .fourth, .fourth span.label {
+    background-color: rgba(55, 99, 127, .5);
+  }
+  .category-bar .fifth, .fifth span.label {
+    background-color: rgba(27, 134, 204, .5);
+  }
+  .category-bar .sixth, .sixth span.label {
+    background-color: rgba(199, 233, 255, .5);
+  }
+}
 
 
 

@@ -38,6 +38,7 @@ function loadData(timeFrameRequested) {
   printProductivityScore(timeFrameRequested);
   printMainStats(timeFrameRequested);
   loadFocusModeInfo();
+  printCategoryData(timeFrameRequested);
 }
 
 loadData("day");
@@ -186,6 +187,69 @@ function loadFocusModeInfo() {
     }
   });
 }
+function printCategoryData(timeFrameRequested) {
+  chrome.storage.local.get('categories', function(items) {
+    var categories = items['categories'];
+
+    var topSixCategories = [];
+    for (var i = 0; i <= 5; i++) {
+      topSixCategories[i] = {};
+      topSixCategories[i]['_id'] = '-';
+      topSixCategories[i][timeFrameRequested + '_time'] = 0;
+    }
+
+    for (key in categories) {
+      var category = categories[key];
+      var categoryTime = category[timeFrameRequested + '_time'];
+
+      if (categoryTime > topSixCategories[5][timeFrameRequested + '_time']) {
+        topSixCategories[5] = category;
+        
+        for (var i=4; i >= 0; i--) {
+          if (categoryTime > topSixCategories[i][timeFrameRequested + '_time']) {
+            topSixCategories[i+1] = topSixCategories[i];
+            topSixCategories[i] = category;
+          }
+        }
+      }
+
+    }
+
+    for (var i = 0; i < 6; i++) {
+      console.log("------> " + topSixCategories[i][timeFrameRequested + '_time']);
+    }
+    console.log(topSixCategories);
+
+    var totalTime = 0;
+    var topCategories = [];
+    for (var i = 0; i <= 5; i++) {
+      totalTime += topSixCategories[i][timeFrameRequested + '_time'];
+      topCategories[i] = topSixCategories[i][timeFrameRequested + '_time'];
+    }
+    for (var i=0; i < 5; i++) {
+      topCategories[i] = Math.floor((topCategories[i]/totalTime)*100);
+    }
+    topCategories[5] = 100 - topCategories[0] - topCategories[1] -
+                        topCategories[2] - topCategories[3] - topCategories[4];
+
+
+    $('.category-bar .first').css('width', topCategories[0].toString() + '%');
+    $('.category-bar .second').css('width', topCategories[1].toString() + '%');
+    $('.category-bar .third').css('width', topCategories[2].toString() + '%');
+    $('.category-bar .fourth').css('width', topCategories[3].toString() + '%');
+    $('.category-bar .fifth').css('width', topCategories[4].toString() + '%');
+    $('.category-bar .sixth').css('width', topCategories[5].toString() + '%');
+
+    $('.category-stats .row > .first .description').text(topSixCategories[0]['_id']);
+    $('.category-stats .row > .second .description').text(topSixCategories[1]['_id']);
+    $('.category-stats .row > .third .description').text(topSixCategories[2]['_id']);
+    $('.category-stats .row > .fourth .description').text(topSixCategories[3]['_id']);
+    $('.category-stats .row > .fifth .description').text(topSixCategories[4]['_id']);
+    $('.category-stats .row > .sixth .description').text(topSixCategories[5]['_id']);
+  
+
+  });
+}
 
 
 $( document ).ready(function() {
@@ -203,7 +267,7 @@ $( document ).ready(function() {
         loadData("month");
       }
       else if ($(this).hasClass("all")) {
-        loadData("all");
+        loadData("total");
       }
 
 

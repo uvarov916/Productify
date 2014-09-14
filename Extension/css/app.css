@@ -17280,43 +17280,44 @@ th.hide-for-touch {
   /* line 7, ../scss/_content.scss */
   * .header .top-menu {
     height: 70px;
-    background: rgba(249, 249, 249, 0.7); }
+    background: rgba(249, 249, 249, 0.85); }
     /* line 11, ../scss/_content.scss */
     * .header .top-menu a {
       font-family: "Avenir Next", "Proxima Nova", "Open Sans", "Gill Sans MT", "Gill Sans", Corbel, Arial, sans-serif;
       font-size: 1.25rem;
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
-      margin-top: 0.8rem; }
-      /* line 18, ../scss/_content.scss */
+      margin-top: 0.8rem;
+      margin-right: 1rem; }
+      /* line 19, ../scss/_content.scss */
       * .header .top-menu a.on {
         background-color: #6CADF9; }
-      /* line 21, ../scss/_content.scss */
+      /* line 22, ../scss/_content.scss */
       * .header .top-menu a.off {
         background-color: #EE8383; }
-  /* line 27, ../scss/_content.scss */
+  /* line 28, ../scss/_content.scss */
   * .header .title {
     font-size: 7rem;
     color: #FFFFFF;
     margin-top: 4rem; }
-  /* line 33, ../scss/_content.scss */
+  /* line 34, ../scss/_content.scss */
   * .header .bottom-menu {
     height: 50px;
-    background: rgba(249, 249, 249, 0.7);
+    background: rgba(249, 249, 249, 0.85);
     margin-top: 8rem; }
-    /* line 38, ../scss/_content.scss */
+    /* line 39, ../scss/_content.scss */
     * .header .bottom-menu a {
       display: block;
       color: #6F6F6F;
       font-size: 1.25rem;
       margin-top: 1rem; }
-      /* line 44, ../scss/_content.scss */
+      /* line 45, ../scss/_content.scss */
       * .header .bottom-menu a.active {
         color: #6CADF9; }
-/* line 52, ../scss/_content.scss */
+/* line 53, ../scss/_content.scss */
 * .overview-stats {
   background: #FBFBFB; }
-  /* line 55, ../scss/_content.scss */
+  /* line 56, ../scss/_content.scss */
   * .overview-stats .circle {
     position: relative;
     width: 250px;
@@ -17324,10 +17325,10 @@ th.hide-for-touch {
     border-radius: 125px;
     margin-top: -125px;
     background: #FBFBFB; }
-    /* line 63, ../scss/_content.scss */
+    /* line 64, ../scss/_content.scss */
     * .overview-stats .circle #productivityScoreChart {
       margin-top: 1rem; }
-    /* line 67, ../scss/_content.scss */
+    /* line 68, ../scss/_content.scss */
     * .overview-stats .circle .productivity-score {
       display: block;
       width: 100%;
@@ -17336,53 +17337,97 @@ th.hide-for-touch {
       font-size: 5rem;
       color: #6F6F6F;
       top: 7rem; }
-  /* line 78, ../scss/_content.scss */
+  /* line 79, ../scss/_content.scss */
   * .overview-stats .stat {
     position: relative;
     margin-top: 2rem;
     margin-bottom: 2rem;
     color: #6F6F6F; }
-    /* line 84, ../scss/_content.scss */
+    /* line 85, ../scss/_content.scss */
     * .overview-stats .stat span.icon {
       display: inline-block;
       width: 38px;
       height: 38px; }
-      /* line 89, ../scss/_content.scss */
+      /* line 90, ../scss/_content.scss */
       * .overview-stats .stat span.icon.time {
         background: url("../img/time-icon.svg") bottom center no-repeat; }
-      /* line 92, ../scss/_content.scss */
+      /* line 93, ../scss/_content.scss */
       * .overview-stats .stat span.icon.website {
         background: url("../img/website-icon.svg") bottom center no-repeat; }
-    /* line 98, ../scss/_content.scss */
+    /* line 99, ../scss/_content.scss */
     * .overview-stats .stat span.description {
       position: absolute;
       top: 0.5rem; }
-      /* line 102, ../scss/_content.scss */
+      /* line 103, ../scss/_content.scss */
       * .overview-stats .stat span.description em {
         font-weight: 500;
         font-size: 1.25rem;
         font-style: normal; }
-    /* line 110, ../scss/_content.scss */
+    /* line 111, ../scss/_content.scss */
     * .overview-stats .stat.websites-visited .description {
       right: 4rem;
       top: 0.7rem; }
-    /* line 116, ../scss/_content.scss */
+    /* line 117, ../scss/_content.scss */
     * .overview-stats .stat.time-logged .description {
       left: 4rem; }
-  /* line 122, ../scss/_content.scss */
+  /* line 123, ../scss/_content.scss */
   * .overview-stats .most-visited, * .overview-stats .most-time {
     color: #6F6F6F;
     margin-bottom: 3rem; }
-    /* line 126, ../scss/_content.scss */
+    /* line 127, ../scss/_content.scss */
     * .overview-stats .most-visited span, * .overview-stats .most-time span {
       display: block; }
-      /* line 129, ../scss/_content.scss */
+      /* line 130, ../scss/_content.scss */
       * .overview-stats .most-visited span.title, * .overview-stats .most-time span.title {
         font-size: 1rem; }
-      /* line 132, ../scss/_content.scss */
+      /* line 133, ../scss/_content.scss */
       * .overview-stats .most-visited span.description, * .overview-stats .most-time span.description {
         font-size: 1.25rem;
-        line-height: 1rem; }
+        line-height: 1.5rem; }
+/* line 143, ../scss/_content.scss */
+* .category-stats {
+  padding-top: 6rem; }
+  /* line 146, ../scss/_content.scss */
+  * .category-stats .label {
+    display: block;
+    margin: 0 auto;
+    width: 50px;
+    height: 10px;
+    margin-bottom: 1rem; }
+  /* line 156, ../scss/_content.scss */
+  * .category-stats .description {
+    color: #6F6F6F;
+    font-size: 1rem;
+    text-transform: capitalize; }
+  /* line 162, ../scss/_content.scss */
+  * .category-stats .category-bar {
+    height: 50px;
+    margin-top: 5rem;
+    margin-bottom: -10px; }
+    /* line 167, ../scss/_content.scss */
+    * .category-stats .category-bar > div {
+      height: 100%;
+      display: inline-block;
+      margin-right: -4px;
+      margin-bottom: -6px; }
+  /* line 175, ../scss/_content.scss */
+  * .category-stats .category-bar .first, * .category-stats .first span.label {
+    background-color: rgba(17, 84, 127, 0.5); }
+  /* line 178, ../scss/_content.scss */
+  * .category-stats .category-bar .second, * .category-stats .second span.label {
+    background-color: rgba(110, 197, 255, 0.5); }
+  /* line 181, ../scss/_content.scss */
+  * .category-stats .category-bar .third, * .category-stats .third span.label {
+    background-color: rgba(33, 167, 255, 0.5); }
+  /* line 184, ../scss/_content.scss */
+  * .category-stats .category-bar .fourth, * .category-stats .fourth span.label {
+    background-color: rgba(55, 99, 127, 0.5); }
+  /* line 187, ../scss/_content.scss */
+  * .category-stats .category-bar .fifth, * .category-stats .fifth span.label {
+    background-color: rgba(27, 134, 204, 0.5); }
+  /* line 190, ../scss/_content.scss */
+  * .category-stats .category-bar .sixth, * .category-stats .sixth span.label {
+    background-color: rgba(199, 233, 255, 0.5); }
 /* line 1, ../scss/_notimeleft.scss */
 * body.notimeleft {
   background-image: url("../img/bear-background.jpg");
