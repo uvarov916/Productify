@@ -17383,3 +17383,17 @@ th.hide-for-touch {
       * .overview-stats .most-visited span.description, * .overview-stats .most-time span.description {
         font-size: 1.25rem;
         line-height: 1rem; }
+/* line 1, ../scss/_notimeleft.scss */
+* body.notimeleft {
+  background-image: url("../img/bear-background.jpg");
+  background-size: cover;
+  height: 100%;
+  width: 100%; }
+  /* line 7, ../scss/_notimeleft.scss */
+  * body.notimeleft h1 {
+    display: block;
+    position: absolute;
+    font-size: 5rem;
+    color: white;
+    bottom: 1rem;
+    text-shadow: 2px 2px 8px #000; }

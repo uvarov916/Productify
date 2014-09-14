@@ -1,0 +1,15 @@
+body.notimeleft {
+	background-image: url('../img/bear-background.jpg');
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+
+	h1 {
+		display: block;
+		position: absolute;
+		font-size: 5rem;
+		color: white;
+		bottom: 1rem;
+		text-shadow: 2px 2px 8px #000;
+	}
+}
