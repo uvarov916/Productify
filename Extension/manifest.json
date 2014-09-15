@@ -6,14 +6,12 @@
 	"manifest_version": 2,
 
 	"name": "Productify",
-	"description": "no decription",
-	"version": "0.1",
+	"description": "This extension allows you to spend time online smarter.",
+	"version": "1.0.2",
 
 	"chrome_url_overrides": {
       "newtab": "tabpage.html"
    	},
-
-	// "options_page": "settings.html",
 
 	"permissions": [
 		"storage", "unlimitedStorage", "tabs", "idle", "http://productify.herokuapp.com/*"
