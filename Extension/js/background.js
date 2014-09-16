@@ -37,6 +37,19 @@ function initialize() {
       });
     }
   });
+  chrome.storage.local.get('date', function(items) {
+    if (items.date == undefined) {
+      var d = new Date();
+      var temp = {
+        "date" : d.getDate(),
+        "day" : d.getDay(),
+        "month" : d.getMonth() 
+      }
+      chrome.storage.local.set({'date' : temp}, function() {
+        console.log('Initialized storage for date data');
+      });
+    }
+  });
 }
 
 
@@ -123,6 +136,8 @@ function stopTrackTime() {
 
   // ---------------------> for developing <---------------------
   console.log('Stopped tracking');
+
+  checkDate();
 }
 
 
@@ -238,6 +253,66 @@ function updateTimeAndVisits(object, time) {
   object['last_visit'] = (new Date()).getTime();
 
   return object;
+}
+
+
+function checkDate() {
+  chrome.storage.local.get('date', function(items) {
+    var d = items.date;
+
+    var currentDate = new Date();
+
+    if (currentDate.getDate() != d.date || 
+        currentDate.getMonth() != d.month ) {
+      resetTimeFor("day");
+
+      if (currentDate.getDay() == 0 ||
+          currentDate.getMonth() != d.month ||
+          currentDate.getDay() < d.day ||
+          currentDate.getDate() - d.date > 7) {
+
+        resetTimeFor("week");
+
+        if (currentDate.getMonth() != d.month) {
+          resetTimeFor("month");
+        }
+
+      }
+    }
+
+    var d = new Date();
+    var temp = {
+      "date" : d.getDate(),
+      "day" : d.getDay(),
+      "month" : d.getMonth() 
+    }
+    chrome.storage.local.set({'date' : temp}, function() {
+      console.log('Updated stored date');
+    });
+
+  });
+}
+
+
+function resetTimeFor(timeFrame) {
+  chrome.storage.local.get(['categories', 'websites'], function(items) {
+    var categories = items['categories'];
+    var websites = items['websites'];
+    for (key in categories) {
+      categories[key][timeFrame + "_time"] = 0;
+      categories[key][timeFrame + "_visits"] = 0;
+    }
+    for (key in websites) {
+      websites[key][timeFrame + "_time"] = 0;
+      websites[key][timeFrame + "_visits"] = 0;
+    }
+
+    items['websites'] = websites;
+    items['categories'] = categories;
+    chrome.storage.local.set(items, function() {
+    });
+
+  });
 }
 
 

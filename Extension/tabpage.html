@@ -8,6 +8,7 @@
     <script src="bower_components/modernizr/modernizr.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="js/Chart.js"></script>
+    <script src="js/tabpage.js"></script>
   </head>
   <body>
 
@@ -25,19 +26,19 @@
       <div class="bottom-menu">
         <div class="row">
           <div class="medium-2 columns text-left left">
-            <a href="#" class="active">Day</a>
+            <a class="day active" href="#">Day</a>
           </div>
           
           <div class="medium-2 columns text-left left">
-            <a href="#" class="">Week</a>
+            <a class="week" href="#" class="">Week</a>
           </div>
 
           <div class="medium-2 columns text-right left medium-offset-4">
-            <a href="#" class="">Month</a>
+            <a class="month" href="#" class="">Month</a>
           </div>
 
           <div class="medium-2 columns text-right left">
-            <a href="#" class="">All time</a>
+            <a class="all" href="#" class="">All time</a>
           </div>
 
         </div>
@@ -60,7 +61,8 @@
 
         <div class="medium-4 columns text-center">
           <div class="circle">
-            <span class="productivity-score">100</span>
+            <canvas id="productivityScoreChart" width="217" height="217"></canvas>
+            <span class="productivity-score">0</span>
           </div>
         </div>
 
